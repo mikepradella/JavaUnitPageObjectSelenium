@@ -22,8 +22,13 @@ public class FacebookTest {
 	}
 
 	@Test
-	public void test() {		
-		facebook.preencherComboBox();
+	public void test() {	
+		//funciona corretamente
+		//facebook.preencherComboBox();
+		
+		// preenchendo campos atraves do Xpath
+		facebook.preencherCamposPorXpath();
+		
 	}
 
 }
