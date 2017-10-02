@@ -1,6 +1,8 @@
 package test;
 
 
+import java.io.IOException;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -25,9 +27,12 @@ public class CadastroTest {
 		System.setProperty("webdriver.gecko.driver", "C:/Users/Inmetrics/Downloads/ambienteEclipseSelenium/geckodriver.exe");
 		driver = new FirefoxDriver();
 		
+		
 		driver.get("https://accounts.google.com/SignUp?continue=https%3A%2F%2Faccounts.google.com%2FManageAccountwww.msn.com/pt-br/?pc=SK216&ocid=SK216DHP&osmkt=pt-br");
+		cadastroPages.capturaTela(driver);
 		cadastroPages = new CadastroPages(driver);
-	
+		
+		//cadastroPages.capturaTela();
 	}
 
 	@AfterClass
@@ -44,11 +49,13 @@ public class CadastroTest {
 	}
 
 	@Test
-	public void test() {
+	public void test() throws IOException {
 		cadastroPages.preencherCampos();
-		
+		cadastroPages.capturaTela(driver);
+		//cadastroPages.capturaTela();
 		Assert.assertEquals(cadastroPages.validarMensagem(), "Você não pode deixar este campo em branco.");
-		
+		//cadastroPages.capturaTela();
+		cadastroPages.capturaTela(driver);
 	}
 
 }

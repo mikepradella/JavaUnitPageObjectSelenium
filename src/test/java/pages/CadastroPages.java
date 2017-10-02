@@ -1,6 +1,13 @@
 package pages;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Random;
+
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -71,6 +78,19 @@ public class CadastroPages {
 		//errormsg_0_GmailAddress
 		return driver.findElement(By.id("errormsg_0_GmailAddress")).getText();
 			
+	}
+	
+	public static void capturaTela(WebDriver driver) throws IOException {
+		
+		// instanciado a class Random para trocar os nomes das paginas capturadas
+		Random num = new Random();	
+		
+		// captura a tela e salva na pasta evidenciaUsandoMetodo do projeto , funciona corretamente
+		File source = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		//String caminhoEvidencia = "C:/Users/Inmetrics/workspace/com.apreendendoAutomacao.cucumber/Evidencias";
+		//este comando salva na raiz - new File("my.jpg")
+		FileUtils.copyFile(source,new File("C:/Users/Inmetrics/workspace/CadastroGoogle/evidenciaUsandoMetodo/my"+(num.nextInt())+".jpg"));
+	
 	}
 	
 }
