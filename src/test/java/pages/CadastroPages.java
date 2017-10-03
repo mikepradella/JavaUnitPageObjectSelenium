@@ -1,10 +1,14 @@
 package pages;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Random;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -91,6 +95,21 @@ public class CadastroPages {
 		//este comando salva na raiz - new File("my.jpg")
 		FileUtils.copyFile(source,new File("C:/Users/Inmetrics/workspace/CadastroGoogle/evidenciaUsandoMetodo/my"+(num.nextInt())+".jpg"));
 	
+	}
+	
+	public void lendoArqExcel() throws IOException {
+		File caminhoExcel = new File("C:/Users/Inmetrics/Desktop/treinandoSelenium.xlsx");
+		FileInputStream fis = new FileInputStream(caminhoExcel);
+		XSSFWorkbook wb = new XSSFWorkbook (fis);
+		XSSFSheet sheet1 = wb.getSheetAt(0);
+		for (int i = 0;i < 4;i++){
+			for (int j = 0;j < 2;j++){
+			String data0 = sheet1.getRow(i).getCell(j).getStringCellValue();
+			System.out.println("lendo todos os dados do excel :" + data0);
+			}
+		}	
+		wb.close();
+
 	}
 	
 }

@@ -31,6 +31,7 @@ public class CadastroTest {
 		driver.get("https://accounts.google.com/SignUp?continue=https%3A%2F%2Faccounts.google.com%2FManageAccountwww.msn.com/pt-br/?pc=SK216&ocid=SK216DHP&osmkt=pt-br");
 		cadastroPages.capturaTela(driver);
 		cadastroPages = new CadastroPages(driver);
+		cadastroPages.lendoArqExcel();
 		
 		//cadastroPages.capturaTela();
 	}
